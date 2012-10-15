@@ -2,45 +2,46 @@ Ext.define("GS.view.Main", {
     extend: 'Ext.tab.Panel',
     requires: [
         'Ext.TitleBar',
-        'Ext.Video'
+		'Ext.device.Camera',
+		'Ext.Button'
     ],
     config: {
-        tabBarPosition: 'top',
-
+        tabBarPosition: 'bottom',
         items: [
             {
-                title: 'Home Tab',
+                title: 'Welcome',
                 iconCls: 'home',
 
                 styleHtmlContent: true,
                 scrollable: true,
 
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
 
                 html: [
-                    "This is a test page."
+                    "This is a prototype for RAXA patient image module created by NYU.",
+					"To take a photograph, tap on the take photo icon below.",
+					"Once on the 'Take Photo' tab, tap 'Take Photo'"
                 ].join("")
             },
             {
-                title: 'Woohoo!',
+                title: 'Take Photo',
                 iconCls: 'action',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
-                    },
-                    {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
-                    }
-                ]
+                items:[
+					{
+						xtype: 'button',
+						text: 'Take Photo',
+						handler: function(){
+							Ext.device.Camera.capture({
+							    success: function(image) {
+							        imageView.setSrc(image);
+							    },
+							    quality: 75,
+							    width: 200,
+							    height: 200,
+							    destination: 'camera'
+							});
+						}
+					}
+				]
             }
         ]
     }

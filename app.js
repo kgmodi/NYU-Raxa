@@ -32,7 +32,6 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('GS.view.Main'));
-        Ext.Viewport.add(Ext.create('GS.view.Camera'));
     },
 
     onUpdated: function() {

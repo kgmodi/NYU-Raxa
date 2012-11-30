@@ -37,7 +37,8 @@ Ext.define("GS.view.Main", {
 							    quality: 75,
 							    width: 200,
 							    height: 200,
-							    destination: 'camera'
+							    destination: 'file',
+							    source: 'camera'
 							});
 						}
 					}
